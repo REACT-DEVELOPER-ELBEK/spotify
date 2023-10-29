@@ -1,0 +1,50 @@
+$book: Circular Std Book;
+$medium: Circular Std Medium;
+$bold: Circular Std Bold;
+$black: Circular Std Black;
+
+nav{
+    max-width: 320px;
+    padding: 72px 10px;
+    background: #000;
+    color: #fff;
+    min-height: 500px;
+    .nav__wrapper{
+        .nav__links{
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #282828;
+            padding-bottom: 25px;
+            gap: 58px;
+            a{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                color: #FFF;
+                font-family: $bold;
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .nav__params, .nav__actions{
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+        .nav__playlist__names{
+            margin-top: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            a{
+                color: #B3B3B3;
+                font-family: $book;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 450;
+                line-height: normal;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
