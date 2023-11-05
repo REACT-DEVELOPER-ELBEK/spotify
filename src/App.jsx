@@ -1,7 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import Dashboard from "./routes/dashboard/Dashboard";
-import './fonts/style.css'
-import './App.css'
+import Dashboard from "./layout/dashboard/Dashboard";
+import "./fonts/style.css";
+import "./App.css";
+import Home from "./routes/home/Home";
+import Invite from "./layout/invite/Invite";
 
 // client-id and secret variable
 const CLIENT_ID = "d36c9649b18e45de98cd473d38f88580";
@@ -30,12 +32,13 @@ const App = () => {
   getToken();
 
   return (
-    <>
+    <div className="body">
       <Dashboard />
       <Routes>
-        <Route />
+        <Route path="/" element={<Home />} />
       </Routes>
-    </>
+      <Invite />
+    </div>
   );
 };
 
