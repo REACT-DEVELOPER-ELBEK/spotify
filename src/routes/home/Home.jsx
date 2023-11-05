@@ -4,6 +4,7 @@ import { homeNavArrow } from "../../assets/img";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHomePlaylists } from "../../redux/slicer/homeSlicer";
 import { Link } from "react-router-dom";
+import Mixes from "./homePlaylists/Mixes";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,6 @@ const Home = () => {
     (state) => state.home_playlist.data.playlists?.items
   );
 
-  console.log(homePlaylistData);
 
   useEffect(() => {
     dispatch(fetchHomePlaylists());
@@ -28,7 +28,7 @@ const Home = () => {
             <h2>Good afternoon</h2>
             <div className="home__playlist_items">
               {homePlaylistData?.slice(0, 6).map((item) => (
-                <Link to={`https://api.spotify.com/v1/playlists/${item.id}`} className="home__playlist_item">
+                <Link key={item.id} to={`https://api.spotify.com/v1/playlists/${item.id}`} className="home__playlist_item">
                   <img src={item.images[0].url} alt="" />
                   <div className="playlist__name">
                     <h2>{item.name}</h2>
@@ -39,6 +39,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Mixes/>
     </div>
   );
 };
