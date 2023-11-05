@@ -1,29 +1,60 @@
 $font: Circular Std Book;
 
 .home {
+  font-family: $font;
   background: linear-gradient(180deg, #3333a3 5.09%, #121212 33.4%);
-  .container{
-    .home__wrapper{
-        .home__swipes{
-            display: flex;
-            gap: 22px;
-            padding: 41px;
-            img{
-                &:last-child{
-                    transform: rotate(180deg);
-                }
-            }
+  .container {
+    .home__wrapper {
+      .home__swipes {
+        display: flex;
+        gap: 22px;
+        padding-top: 41px;
+        img {
+          &:last-child {
+            transform: rotate(180deg);
+          }
         }
-        .home__playlists{
+      }
+      .home__playlists {
+        margin-top: 30px;
+        h2 {
+          color: #fff;
+          font-family: $font;
+          font-size: 39px;
+          font-weight: 700;
+          letter-spacing: -0.39px;
+        }
+        .home__playlist_items {
             margin-top: 30px;
-            h2{
-                color: #FFF;
-                font-family: $font;
-                font-size: 39px;
-                font-weight: 700;
-                letter-spacing: -0.39px;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          grid-column-gap: 32px;
+          grid-row-gap: 16px;
+          .home__playlist_item {
+            display: flex;
+            width: 370px;
+            height: 82px;
+            align-items: center;
+            border-radius: 6px;
+            background: rgba(#fff, $alpha: 0.1);
+
+            img {
+              width: 82px;
+              height: 82px;
             }
+            .playlist__name {
+              h2 {
+                color: #fff;
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: 0.2px;
+                padding-left: 21px;
+              }
+            }
+          }
         }
+      }
     }
   }
 }
