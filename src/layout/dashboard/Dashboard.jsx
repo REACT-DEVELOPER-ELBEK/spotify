@@ -8,12 +8,11 @@ import { navAddPlaylist, navHome, navLibriary, navLikedSongs, navSearch } from "
 const Dashboard = () => {
   const dispatch = useDispatch();
   const playlistData = useSelector(
-    (state) => state.musics.data.playlists?.items
+    (state) => state.side_bar.data.playlists?.items
   );
   useEffect(() => {
     dispatch(fetchMusics());
   }, []);
-  console.log(playlistData);
   return (
     <>
       <nav>
