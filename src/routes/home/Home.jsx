@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Home.scss'
 import { homeNavArrow } from '../../assets/img'
 import { useDispatch, useSelector } from 'react-redux'
+import { fetchHomePlaylists } from '../../redux/slicer/homeSlicer'
 
 const Home = () => {
     const dispatch = useDispatch()
-    const homePlaylistData = useSelector(state=>console.log(state.home_playlist))
+    const homePlaylistDataSelector = useSelector(state=>(state.home_playlist.data.playlists?.items))
+
+    useEffect(()=>{
+        dispatch(fetchHomePlaylists())
+    }, [])
   return (
     <div className="home">
         <div className="container">
