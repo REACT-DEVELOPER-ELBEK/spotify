@@ -22,9 +22,11 @@ const Home = () => {
     <div className="home">
       <div className="container">
         <div className="home__wrapper">
-          <div className="home__swipes">
-            <img src={homeNavArrow} alt="" />
-            <img src={homeNavArrow} alt="" />
+          <div>
+            <div className="home__swipes">
+              <img src={homeNavArrow} alt="" />
+              <img src={homeNavArrow} alt="" />
+            </div>
           </div>
           <div className="home__playlists">
             <h2>Good afternoon</h2>

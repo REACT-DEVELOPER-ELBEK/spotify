@@ -1,0 +1,65 @@
+$font: Circular Std Book;
+
+.playlist {
+  padding-top: 108px;
+  font-family: $font;
+  background: linear-gradient(180deg, #def628 5.09%, #121212 43.28%);
+  .container {
+    .playlist__wrapper {
+      .playlist__hero {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+        .playlist__img {
+          img {
+            width: 297px;
+            object-fit: cover;
+          }
+        }
+        .playlist__description {
+          margin-top: 12px;
+          h3 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+          }
+          h1 {
+            color: #fff;
+            font-size: 50px;
+            font-weight: 800;
+            margin-top: 20px;
+          }
+        }
+        .playlist__artists {
+          margin-top: 12px;
+          display: flex;
+          gap: 5px;
+          align-items: center;
+          p,
+          span {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 450;
+          }
+          span {
+            color: rgba(255, 255, 255, 0.7);
+          }
+        }
+        .playlist__info {
+          color: #fff;
+          display: flex;
+          gap: 7px;
+          align-items: center;
+          h5 {
+            font-size: 18px;
+            margin-top: 12px;
+            font-weight: 450;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.18px;
+          }
+        }
+      }
+    }
+  }
+}

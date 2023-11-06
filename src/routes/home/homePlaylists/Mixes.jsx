@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const Mixes = () => {
   const dispatch = useDispatch();
   const topMixes = useSelector((state) =>state.home_your_top_mixes.data.playlists?.items);
-console.log(topMixes);
   useEffect(() => {
     dispatch(fetchYourTopMixes());
   }, []);
@@ -21,7 +20,7 @@ console.log(topMixes);
           </div>
           <div className="playlist__parent">
               {topMixes?.slice(3, 7).map((item) => (
-                <Link to={`https://api.spotify.com/v1/playlists/${item.id}`} className="playlist__item" key={item.id}>
+                <Link to={`/playlist/${item.id}`} className="playlist__item" key={item.id}>
                     <img src={item.images[0].url} alt="" />
                     <h2>{item.name}</h2>
                     <h3>{item.description.slice(0, 38)}</h3>

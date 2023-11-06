@@ -23,7 +23,7 @@ const RecentlyPlayed = () => {
           <div className="playlist__parent">
             {recentlyPlayed?.slice(3, 7).map((item) => (
               <Link
-                to={`https://api.spotify.com/v1/playlists/${item.id}`}
+                to={`/playlist/${item.id}`}
                 className="playlist__item"
                 key={item.id}
               >

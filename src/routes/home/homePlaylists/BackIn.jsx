@@ -9,7 +9,6 @@ const BackIn = () => {
   const jumpBackIn = useSelector(
     (state) => state.jump_back_in.data.playlists?.items
   );
-  console.log(jumpBackIn);
   useEffect(() => {
     dispatch(fetchBackIn());
   }, []);
@@ -23,7 +22,7 @@ const BackIn = () => {
           </div>
           <div className="playlist__parent">
               {jumpBackIn?.slice(10, 14).map((item) => (
-                <Link to={`https://api.spotify.com/v1/playlists/${item.id}`} className="playlist__item" key={item.id}>
+                <Link to={`/playlist/${item.id}`} className="playlist__item" key={item.id}>
                     <img src={item.images[0].url} alt="" />
                     <h2>{item.name}</h2>
                     <h3>{item.description.slice(0, 38)}</h3>

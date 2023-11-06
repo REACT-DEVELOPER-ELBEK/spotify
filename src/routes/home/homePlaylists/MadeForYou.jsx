@@ -24,7 +24,7 @@ const MadeForYou = () => {
             <div className="playlist__parent">
               {madeForYou?.slice(8, 12).map((item) => (
                 <Link
-                  to={`https://api.spotify.com/v1/playlists/${item.id}`}
+                  to={`/playlist/${item.id}`}
                   className="playlist__item"
                   key={item.id}
                 >

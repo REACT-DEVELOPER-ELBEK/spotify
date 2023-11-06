@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Invite.scss";
 import {
   inviteClose,
@@ -8,7 +8,10 @@ import {
 } from "../../assets/img";
 
 const Invite = () => {
-  return (
+  const [isClose, setIsClose] = useState(false);
+  return isClose ? (
+    <></>
+  ) : (
     <div className="invite">
       <div className="container">
         <div className="invite__wrapper">
@@ -16,7 +19,7 @@ const Invite = () => {
             <h2>Friend Activity</h2>
             <div className="invite__actions">
               <img src={inviteContact} alt="" />
-              <img src={inviteClose} alt="" />
+              <img className="close" onClick={() => setIsClose(true)} src={inviteClose} alt="" />
             </div>
           </div>
           <div className="invite__description">
@@ -38,8 +41,8 @@ const Invite = () => {
           </div>
           <div className="invite__settings">
             <h2>
-              Go to Settings &#62; Social and enable “Share my listening activity on
-              Spotify.’ You can turn this off at any time.
+              Go to Settings &#62; Social and enable “Share my listening
+              activity on Spotify.’ You can turn this off at any time.
             </h2>
             <button>settings</button>
           </div>
