@@ -44,7 +44,7 @@ const Dashboard = () => {
             {
                 playlistData?.map((playlist, index)=>(
                     <div key={index}>
-                        <Link to={playlist.href}>{playlist.name.length>28?playlist.name.slice(0, 29)+"...": playlist.name}</Link>
+                        <Link to={`/playlist/${playlist.id}`}>{playlist.name.length>28?playlist.name.slice(0, 29)+"...": playlist.name}</Link>
                     </div>
                 ))
             }
