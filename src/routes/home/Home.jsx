@@ -34,7 +34,7 @@ const Home = () => {
               {homePlaylistData?.slice(0, 6).map((item) => (
                 <Link
                   key={item.id}
-                  to={`https://api.spotify.com/v1/playlists/${item.id}`}
+                  to={`/playlist/${item.id}`}
                   className="home__playlist_item"
                 >
                   <img src={item.images[0].url} alt="" />
