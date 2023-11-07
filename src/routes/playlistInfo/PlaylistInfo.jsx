@@ -130,6 +130,7 @@ const PlaylistInfo = () => {
                 <tr>
                   <th>#</th>
                   <th>title</th>
+                  <th>album</th>
                   <th>
                     <BiTime />
                   </th>
@@ -142,10 +143,11 @@ const PlaylistInfo = () => {
                     <td>
                       <img src={item.track.album.images[0].url} alt="" />{" "}
                       <div className="playlist__item">
-                        <h5>{item.track.album.name}</h5>
+                        <h5>{item.track.name}</h5>
                         <h6>{item.track.album.artists[0].name}</h6>
                       </div>
                     </td>
+                    <td>{item.track.album.name}</td>
                     <td>{getTimePlaylist(item.track.duration_ms)}</td>
                   </tr>
                 ))}
