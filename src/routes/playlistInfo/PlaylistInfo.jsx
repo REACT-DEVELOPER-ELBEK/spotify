@@ -2,10 +2,24 @@ import React, { useEffect, useState } from "react";
 import "./PlaylistInfo.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import {
+  AiFillPlayCircle,
+  AiFillPauseCircle,
+  AiOutlineHeart,
+  AiFillHeart,
+  AiFillCaretRight,
+} from "react-icons/ai";
+import { TfiDownload } from "react-icons/tfi";
+import { BsThreeDots } from "react-icons/bs";
+import { BiSearch, BiTime } from "react-icons/bi";
 
 const ACCESS_TOKEN = JSON.stringify(localStorage.getItem("access_token"));
 
 const PlaylistInfo = () => {
+  const [isPause, setIsPause] = useState(true);
+  const [isLiked, setIsLiked] = useState(true);
   const params = useParams();
   let playlistId = params.id;
   const [playlist, setPlaylist] = useState([]);
@@ -31,18 +45,13 @@ const PlaylistInfo = () => {
     seconds = seconds % 60;
     minutes = minutes % 60;
     hours = hours % 24;
-    return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
-      seconds
-    )}`;
+    return `02:${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`;
   }
-
-//   let a = 0;
-//   function getDuration() {
-//     for (let i = 0; i < playlist[0].tracks.items.length; i++) {
-//       console.log(a += playlist[0]?.tracks.items[i].track.duration_ms);
-//     }
-//   }
-//   getDuration();
+  function getTimePlaylist(millis) {
+    let minutes = Math.floor(millis / 60000);
+    let seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
 
   return (
     <div className="playlist">
@@ -53,7 +62,7 @@ const PlaylistInfo = () => {
               playlist.map((item) => (
                 <React.Fragment key={item.id}>
                   <div className="playlist__img">
-                    <img src={item.images[0].url} alt="" />
+                    <LazyLoadImage effect="blur" src={item.images[0].url} alt="" />
                   </div>
                   <div className="playlist__description">
                     <h3>PUBLIC PLAYLIST</h3>
@@ -71,12 +80,77 @@ const PlaylistInfo = () => {
                       <p>&#8226;</p>
                       <h3>
                         {item.tracks.items.length} songs,{" "}
-                        {convertMsToTime(item?.tracks.items[0].track.duration_ms)}
+                        {convertMsToTime(
+                          item?.tracks.items[(0, 1)].track.duration_ms
+                        )}
                       </h3>
                     </div>
                   </div>
                 </React.Fragment>
               ))}
+          </div>
+          <div className="playlist__actions">
+            <div className="playlist__actions__left">
+              <p>
+                {isPause ? (
+                  <AiFillPlayCircle onClick={() => setIsPause(false)} />
+                ) : (
+                  <AiFillPauseCircle onClick={() => setIsPause(true)} />
+                )}
+              </p>
+              <p>
+                {isLiked ? (
+                  <AiOutlineHeart onClick={() => setIsLiked(false)} />
+                ) : (
+                  <AiFillHeart onClick={() => setIsLiked(true)} />
+                )}
+              </p>
+              <p>
+                <TfiDownload />
+              </p>
+              <p>
+                <BsThreeDots />
+              </p>
+            </div>
+            <div className="playlist__actions__right">
+              <p>
+                <BiSearch />
+              </p>
+              <p>
+                Custom order{" "}
+                <span>
+                  <AiFillCaretRight className="order__triangle" />
+                </span>
+              </p>
+            </div>
+          </div>
+          <div className="playlist__musics">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>title</th>
+                  <th>
+                    <BiTime />
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {playlist[0]?.tracks.items.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <img src={item.track.album.images[0].url} alt="" />{" "}
+                      <div className="playlist__item">
+                        <h5>{item.track.album.name}</h5>
+                        <h6>{item.track.album.artists[0].name}</h6>
+                      </div>
+                    </td>
+                    <td>{getTimePlaylist(item.track.duration_ms)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
